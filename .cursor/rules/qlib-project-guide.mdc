@@ -1,0 +1,83 @@
+---
+description: 项目指南
+globs: 
+alwaysApply: false
+---
+# Qlib 量化投资平台项目指南
+
+## 项目概述
+Qlib 是一个开源的、AI导向的量化投资平台，旨在利用AI技术实现量化投资的潜力。项目支持多种机器学习建模范式，包括监督学习、市场动态建模和强化学习。
+
+## 核心目录结构
+
+### 主要模块
+- **[qlib/](mdc:qlib)** - 核心库代码
+  - **[__init__.py](mdc:qlib/__init__.py)** - 主要初始化文件，包含核心配置
+  - **[config.py](mdc:qlib/config.py)** - 全局配置管理
+  - **[log.py](mdc:qlib/log.py)** - 日志系统
+  - **[constant.py](mdc:qlib/constant.py)** - 常量定义
+  - **[typehint.py](mdc:qlib/typehint.py)** - 类型提示定义
+
+### 数据处理模块
+- **[qlib/data/](mdc:qlib/data)** - 数据处理核心模块
+  - 包含数据获取、预处理、特征工程等功能
+  - 支持多种数据源和格式
+
+### 模型相关模块
+- **[qlib/model/](mdc:qlib/model)** - 机器学习模型实现
+  - 包含各种量化投资模型
+  - 支持深度学习、传统机器学习等
+
+### 策略模块
+- **[qlib/strategy/](mdc:qlib/strategy)** - 交易策略实现
+  - 包含投资组合优化、信号生成等
+
+### 回测模块
+- **[qlib/backtest/](mdc:qlib/backtest)** - 策略回测框架
+  - 提供完整的回测环境和分析工具
+
+### 工作流模块
+- **[qlib/workflow/](mdc:qlib/workflow)** - 完整工作流管理
+  - 集成数据处理、模型训练、回测的完整流程
+
+### 强化学习模块
+- **[qlib/rl/](mdc:qlib/rl)** - 强化学习框架
+  - 支持连续决策建模
+
+### 贡献模块
+- **[qlib/contrib/](mdc:qlib/contrib)** - 社区贡献的模型和工具
+
+### 实用工具
+- **[qlib/utils/](mdc:qlib/utils)** - 通用工具函数
+- **[qlib/run/](mdc:qlib/run)** - 运行和执行相关工具
+
+## 示例和文档
+- **[examples/](mdc:examples)** - 示例代码和教程
+- **[docs/](mdc:docs)** - 项目文档
+- **[tests/](mdc:tests)** - 测试代码
+
+## 配置和构建
+- **[setup.py](mdc:setup.py)** - Python 包安装配置
+- **[pyproject.toml](mdc:pyproject.toml)** - 项目元数据和依赖
+- **[Makefile](mdc:Makefile)** - 构建和开发工具
+- **[Dockerfile](mdc:Dockerfile)** - Docker 容器配置
+
+## 开发指南
+- **[.pre-commit-config.yaml](mdc:.pre-commit-config.yaml)** - 代码质量检查
+- **[.pylintrc](mdc:.pylintrc)** - Python 代码风格配置
+- **[.mypy.ini](mdc:.mypy.ini)** - 类型检查配置
+
+## 量化投资工作流
+1. **数据准备** - 使用 [qlib/data/](mdc:qlib/data) 模块处理金融数据
+2. **特征工程** - 构建和选择有效的量化因子
+3. **模型训练** - 使用 [qlib/model/](mdc:qlib/model) 训练预测模型
+4. **策略开发** - 在 [qlib/strategy/](mdc:qlib/strategy) 中实现交易策略
+5. **回测验证** - 使用 [qlib/backtest/](mdc:qlib/backtest) 验证策略效果
+6. **在线部署** - 将策略部署到生产环境
+
+## 关键概念
+- **Alpha 挖掘** - 寻找市场中的有价值信号
+- **风险建模** - 评估和管理投资风险
+- **组合优化** - 优化资产配置
+- **订单执行** - 高效执行交易决策
+

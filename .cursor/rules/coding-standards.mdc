@@ -1,0 +1,116 @@
+---
+description: 代码规范
+globs: 
+alwaysApply: false
+---
+# Qlib 编码规范和最佳实践
+
+## Python 代码规范
+
+### 代码风格
+- 遵循 PEP 8 标准
+- 使用 [.pylintrc](mdc:.pylintrc) 中定义的 Pylint 配置
+- 类型检查使用 [.mypy.ini](mdc:.mypy.ini) 配置的 MyPy
+- 代码提交前使用 [.pre-commit-config.yaml](mdc:.pre-commit-config.yaml) 进行检查
+
+### 类型提示
+- 参考 [qlib/typehint.py](mdc:qlib/typehint.py) 中的类型定义
+- 为函数参数和返回值添加类型注解
+- 使用泛型类型改善代码可读性
+
+### 日志记录
+- 使用 [qlib/log.py](mdc:qlib/log.py) 中的日志系统
+- 适当的日志级别：DEBUG、INFO、WARNING、ERROR
+- 包含有意义的日志消息和上下文信息
+
+### 配置管理
+- 全局配置通过 [qlib/config.py](mdc:qlib/config.py) 管理
+- 常量定义在 [qlib/constant.py](mdc:qlib/constant.py)
+- 避免硬编码配置值
+
+## 量化投资开发最佳实践
+
+### 数据处理
+- 数据管道应该是可重现的
+- 使用 [qlib/data/](mdc:qlib/data) 模块的标准接口
+- 实现数据验证和质量检查
+- 考虑数据的时间序列特性
+
+### 模型开发
+- 在 [qlib/model/](mdc:qlib/model) 中实现新模型
+- 遵循统一的模型接口
+- 包含完整的文档字符串
+- 实现模型的保存和加载功能
+
+### 策略开发
+- 策略应该在 [qlib/strategy/](mdc:qlib/strategy) 中实现
+- 包含风险控制机制
+- 实现完整的信号生成逻辑
+- 考虑交易成本和滑点
+
+### 回测验证
+- 使用 [qlib/backtest/](mdc:qlib/backtest) 框架
+- 避免前视偏差（Look-ahead bias）
+- 包含多个评估指标
+- 进行样本外测试
+
+## 测试要求
+
+### 单元测试
+- 测试文件位于 [tests/](mdc:tests) 目录
+- 为核心功能编写单元测试
+- 保持测试覆盖率在合理水平
+- 使用 Mock 对象隔离外部依赖
+
+### 集成测试
+- 测试完整的工作流程
+- 验证不同模块间的集成
+- 包含端到端的回测测试
+
+## 性能优化
+
+### Cython 扩展
+- 关键计算模块使用 Cython 优化
+- 参考 [setup.py](mdc:setup.py) 中的扩展模块配置
+- 数值计算优先考虑向量化操作
+
+### 内存管理
+- 注意大数据集的内存使用
+- 使用生成器和迭代器处理大量数据
+- 及时释放不需要的对象
+
+## 文档要求
+
+### 代码文档
+- 为公共 API 编写详细的文档字符串
+- 包含参数、返回值和异常说明
+- 提供使用示例
+
+### 示例代码
+- 在 [examples/](mdc:examples) 中提供实用示例
+- 示例应该能够直接运行
+- 包含充分的注释说明
+
+## 版本控制
+
+### 提交规范
+- 使用清晰的提交消息
+- 每个提交应该是一个逻辑单元
+- 遵循语义化版本控制
+
+### 分支策略
+- main 分支保持稳定
+- 功能开发使用特性分支
+- 代码审查后合并
+
+## 依赖管理
+
+### 包依赖
+- 在 [pyproject.toml](mdc:pyproject.toml) 中声明依赖
+- 固定关键依赖的版本
+- 定期更新依赖包
+
+### 开发依赖
+- 区分运行时依赖和开发依赖
+- 保持开发环境的一致性
+
